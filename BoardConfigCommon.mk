@@ -18,8 +18,6 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/qsd8k-common/overlay
-
 TARGET_NO_BOOTLOADER := true
 
 # QSD8250
@@ -65,14 +63,11 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/qsd8k-common/bluetooth/vnd_qsd8k.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/qsd8k-common/bluetooth/include
 
-# Fm radio
-#BOARD_HAVE_FM_RADIO := true
-#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-
 # Qcom
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := legacy
 BOARD_VENDOR_QCOM_AMSS_VERSION := 3200
+TARGET_QCOM_GPS_VARIANT := legacy
 
 # Hardware rendering
 BOARD_EGL_CFG := device/htc/qsd8k-common/egl.cfg
@@ -98,9 +93,3 @@ BOARD_NO_BFRAMES := true
 
 # Kernel directory
 TARGET_KERNEL_SOURCE := kernel/htc/qsd8k
-BUILD_KERNEL := true
-
-#BOARD_USES_LEGACY_CAMERA := true
-
-# Override kernel toolchain. (4.6 is too unstable)
-KERNEL_TOOLCHAIN_PREFIX:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.4.3/bin/arm-eabi-
