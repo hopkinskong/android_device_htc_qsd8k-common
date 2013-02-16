@@ -45,11 +45,11 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE                := bcmdhd
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcmdhd_p2p.bin"
+WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P          := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/proc/calibration"
+WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan0 firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/proc/calibration"
 BOARD_LEGACY_NL80211_STA_EVENTS := true
 
 # Audio
@@ -91,7 +91,11 @@ COMMON_GLOBAL_CFLAGS += -DRIL_VERSION_2_SUPPORT
 # Camcorder
 BOARD_USE_OLD_AVC_ENCODER := true
 BOARD_NO_BFRAMES := true
+
+# Camera
+ICS_CAMERA_BLOB := true
 TARGET_PROVIDES_CAMERA_HAL := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Kernel directory
 TARGET_KERNEL_SOURCE := kernel/htc/qsd8k
