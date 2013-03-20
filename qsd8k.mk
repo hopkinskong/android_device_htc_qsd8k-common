@@ -101,7 +101,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #
 
 # Firmware
-#$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
+$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
