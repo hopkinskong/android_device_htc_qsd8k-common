@@ -26,10 +26,6 @@ PRODUCT_COPY_FILES += \
     device/htc/qsd8k-common/media_codecs.xml:system/etc/media_codecs.xml \
     device/htc/qsd8k-common/audio_policy.conf:system/etc/audio_policy.conf
 
-# Misc
-PRODUCT_COPY_FILES += \
-    device/htc/qsd8k-common/init.power.rc:root/init.power.rc
-
 #
 # Required Packages
 #
@@ -56,7 +52,6 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVdec \
     libstagefrighthw
-#    libOmxVidEnc \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -65,7 +60,6 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    power.qsd8k \
     com.android.future.usb.accessory
 
 #
@@ -73,7 +67,6 @@ PRODUCT_PACKAGES += \
 #
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
     debug.composition.type=mdp \
     debug.gr.numframebuffers=2
 
@@ -108,7 +101,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #
 
 # Firmware
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
+#$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -141,4 +134,4 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 # Proprietary blobs
-$(call inherit-product-if-exists, vendor/htc/qsd8k-common/qsd8k-vendor.mk)
+$(call inherit-product, vendor/htc/qsd8k-common/qsd8k-vendor.mk)
