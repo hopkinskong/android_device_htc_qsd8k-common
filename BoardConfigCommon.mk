@@ -18,8 +18,6 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 
-DEVICE_PACKAGE_OVERLAYS += device/htc/qsd8k-common/overlay
-
 TARGET_NO_BOOTLOADER := true
 
 # QSD8250
@@ -40,18 +38,18 @@ TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 TARGET_SPECIFIC_HEADER_PATH := device/htc/qsd8k-common/include
 
 # Wifi
-WIFI_BAND                        := 802_11_ABG
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE                := bcmdhd
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcmdhd_p2p.bin"
-WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-BOARD_LEGACY_NL80211_STA_EVENTS := true
+#WIFI_BAND                        := 802_11_ABG
+#WPA_SUPPLICANT_VERSION           := VER_0_8_X
+#BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+#BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+#BOARD_HOSTAPD_DRIVER             := NL80211
+#BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+#BOARD_WLAN_DEVICE                := bcmdhd
+#WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcmdhd.bin"
+#WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
+#WIFI_DRIVER_FW_PATH_P2P          := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
+#WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+#BOARD_LEGACY_NL80211_STA_EVENTS := true
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
@@ -65,15 +63,12 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/qsd8k-common/bluetooth/vnd_qsd8k.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/qsd8k-common/bluetooth/include
 
-# Fm radio
-#BOARD_HAVE_FM_RADIO := true
-#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-
 # Qcom
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := legacy
 TARGET_QCOM_GPS_VARIANT := legacy
 BOARD_VENDOR_QCOM_AMSS_VERSION := 3200
+TARGET_QCOM_GPS_VARIANT := legacy
 
 # Hardware rendering
 BOARD_EGL_CFG := device/htc/qsd8k-common/egl.cfg
@@ -97,11 +92,10 @@ COMMON_GLOBAL_CFLAGS += -DRIL_VERSION_2_SUPPORT
 BOARD_USE_OLD_AVC_ENCODER := true
 BOARD_NO_BFRAMES := true
 
+# Camera
+ICS_CAMERA_BLOB := true
+TARGET_PROVIDES_CAMERA_HAL := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+
 # Kernel directory
 TARGET_KERNEL_SOURCE := kernel/htc/qsd8k
-BUILD_KERNEL := true
-
-#BOARD_USES_LEGACY_CAMERA := true
-
-# Override kernel toolchain. (4.6 is too unstable)
-KERNEL_TOOLCHAIN_PREFIX:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.4.3/bin/arm-eabi-
